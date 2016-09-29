@@ -8,9 +8,13 @@ i.v.m. MSTest:
 
 - Welke Assert-methods worden naast `Assert.AreEqual` nog allemaal gebruikt?
 
-> Mijn antwoord
+> assert.ok
 
 - Waarom heeft `TestDirectories` een `Initialize`- en `CleanUp`-method?
+
+> `cleanup`-method is om andere tests hun inhoud te verwijderen
+> `Initialize`-method word gebruikt om te initialiseren
+
 - Zijn de attributen `[TestMethod]`, `[TestClass]`, ... noodzakelijk? (Test uit!)
 - Wat is de shortcut om alle tests uit te voeren in VS?
 
