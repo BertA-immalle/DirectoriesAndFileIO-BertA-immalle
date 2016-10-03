@@ -8,7 +8,7 @@ i.v.m. MSTest:
 
 - Welke Assert-methods worden naast `Assert.AreEqual` nog allemaal gebruikt?
 
-> assert.ok
+> `assert.ok`, `assert.Equal`, `assert.IsTrue`, `assert.IsFalse` 
 
 - Waarom heeft `TestDirectories` een `Initialize`- en `CleanUp`-method?
 
@@ -16,14 +16,31 @@ i.v.m. MSTest:
 > `Initialize`-method word gebruikt om te initialiseren
 
 - Zijn de attributen `[TestMethod]`, `[TestClass]`, ... noodzakelijk? (Test uit!)
+
+> Nee, het zijn namen. Je kan ze veranderen en dan nog werken ze.
+
 - Wat is de shortcut om alle tests uit te voeren in VS?
+
+> ctrl + R, A
 
 i.v.m. Files en Directories:
 
 - Wat is het voordeel van `Path.Combine` i.v.m. strings aan elkaar plakken?
+
+> deze methode is handiger
+
 - Wordt de return-waarde van `Directory.CreateDirectory(...)` steeds opgevangen? (TIP: gebruik `CTRL-SHIFT-F`)
+
+> nee, het word gebruikt eenmalig
+
 - Wat is de return-waarde van `Directory.CreateDirectory(...)`?
+
+> de testDir
+
 - Wanneer is het nuttig om de return-waarde van `Directory.CreateDirectory(...)` op te vangen?
+
+> als je ze meerdere keren wilt gebruiken dat in dit project niet nodig is. het word eenmalig gebruikt.
+
 
 i.v.m. duidelijkheid/geschiedenis van de code:
 
