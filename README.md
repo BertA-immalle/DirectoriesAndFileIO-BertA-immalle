@@ -50,9 +50,14 @@ i.v.m. duidelijkheid/geschiedenis van de code:
 
 - Wat lost commit d0320b6a op?
 
-> 
+> deze commit had geen ´[TestMethod]´ en ´[TestInitialize]´
 
 - Wat is het probleem met de files in commit 9d184949?
+
+> gewoon allemaal foute tests.
+
 - Wat doet commit 9b3e4065? Maakt dit de code makkelijker leesbaar? Makkelijker uitbreidbaar?
+
+> het is overzichtelijker voor mijzelf maar moeilijker uitbreidbaar.
 
 
