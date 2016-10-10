@@ -11,7 +11,7 @@ namespace DirectoriesAndFileIO
         string fileA = "";
         string fileAContents = "";
         string fileB = "";
-        string fileBContents = "";
+        string fileBContents = "Hallo \nIk ben Bert Anthonissen";
         string subDir = "";
         string subDirFile = "";
         string subDirFileContents = "";
@@ -47,17 +47,23 @@ namespace DirectoriesAndFileIO
         [TestMethod]
         public void TestFileReadAllText()
         {
-            string txt = File.ReadAllText(fileA);
-            Assert.AreEqual(fileAContents, txt);
+            string txt1 = File.ReadAllText(fileA);
+            Assert.AreEqual(fileAContents, txt1);
+
+            string txt2 = File.ReadAllText(fileB);
+            Assert.AreEqual(fileBContents, txt2);
         }
 
         [TestMethod]
         public void TestReadAllLines()
         {
-            string[] lines = File.ReadAllLines(fileA);
+            string[] linesA = File.ReadAllLines(fileA);
+            Assert.AreEqual(1, linesA.Length);
+            Assert.AreEqual(fileAContents, linesA[0]);
 
-            Assert.AreEqual(1, lines.Length);
-            Assert.AreEqual(fileAContents, lines[0]);
+            string[] linesB = File.ReadAllLines(fileB);
+            Assert.AreEqual(1, linesB.Length);
+            Assert.AreEqual(fileBContents, linesB[0]);
         }
 
         [TestMethod]
