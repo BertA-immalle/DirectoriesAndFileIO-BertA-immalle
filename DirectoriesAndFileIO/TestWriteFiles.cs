@@ -18,7 +18,7 @@ namespace DirectoriesAndFileIO
             string fileA = "";
             string fileAContents = "";
             string fileB = "";
-            string fileBContents = "Hallo \nIk ben Bert Anthonissen";
+            string[] fileBContents = new string[] { "Hallo", "Ik ben Bert Anthonissen" };
             string subDir = "";
             string subDirFile = "";
             string subDirFileContents = "";
@@ -26,19 +26,17 @@ namespace DirectoriesAndFileIO
             [TestInitialize]
             public void Initialize()
             {
-                // Create a test-directory with known files and directories
+                // Create a test-directory with unknown files and directories
                 testDir = "testDir";
                 fileA = Path.Combine(testDir, "a.txt");
                 fileB = Path.Combine(testDir, "b.txt");
                 subDir = Path.Combine(testDir, "subDir");
                 subDirFile = Path.Combine(subDir, subDirFile);
                 fileAContents = "This is a.txt.";
-                fileBContents = "This is b.txt.";
                 subDirFileContents = "This is a file in a sub-directory.";
 
                 Directory.CreateDirectory(testDir);
                 File.WriteAllText(fileA, fileAContents);
-                File.WriteAllText(fileB, fileBContents);
                 Directory.CreateDirectory(subDir);
             }
 
@@ -54,18 +52,33 @@ namespace DirectoriesAndFileIO
             [TestMethod]
             public void TestWriteAllText()
             {
-                string txt1 = File.WriteAllText(fileA, "this is a file named a.txt");
-                Assert.AreEqual(fileAContents,txt1);
+                StreamReader reader = new StreamReader(fileA);
+                string result = reader.ReadToEnd();
+                Assert.AreEqual(result,fileAContents);
+                reader.Close();
             }
 
             [TestMethod]
             public void TestWriteAllLines()
             {
+                File.WriteAllLines(fileB, fileBContents);
+                StreamReader reader = new StreamReader(fileB);
+                string result = reader.ReadToEnd();
+                Assert.AreEqual(result, "one\r\ntwo\r\n");
+                reader.Close();
             }
 
             [TestMethod]
             public void TestStreamWriter()
             {
+                StreamWriter writer = new StreamWriter(fileA);
+                writer.Write(fileAContents);
+                writer.Close();
+
+                StreamReader reader = new StreamReader(fileA);
+                var testreader = reader.ReadToEnd();
+                reader.Close();
+                Assert.AreEqual(testreader, fileAContents);
             }
         }
     }
